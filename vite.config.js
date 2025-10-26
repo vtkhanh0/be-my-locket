@@ -77,7 +77,7 @@ export default defineConfig({
           react: ["react", "react-dom"],
           ui: ["lucide-react", "sonner", "react-icons", "react-toastify", "react-fast-marquee"],
           crop: ["react-easy-crop"],
-          vendor: ["axios", "zustand", "dexie"]
+          vendor: ["axios", "zustand", "dexie"],
         },
       },
     },
