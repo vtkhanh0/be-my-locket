@@ -1,0 +1,25 @@
+name: Unzip and Update Src
+on:
+  push:
+    paths:
+      - 'src.zip'  # Chạy khi src.zip được push
+jobs:
+  unzip:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install unzip
+        run: sudo apt-get install unzip
+      - name: Unzip src.zip
+        run: |
+          unzip src.zip -d .  # Giải nén vào thư mục gốc
+          rm src.zip  # Xóa src.zip
+      - name: Commit changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add src/
+          git commit -m "Update src folder from src.zip"
+          git push origin main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
