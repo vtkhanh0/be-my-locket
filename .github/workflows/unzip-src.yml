@@ -2,7 +2,7 @@ name: Unzip and Update Src
 on:
   push:
     paths:
-      - 'src.zip'  # Chạy khi src.zip được push
+      - 'Client-Locket-Dio-main.zip'  # Chạy khi Client-Locket-Dio-main.zip được push
 jobs:
   unzip:
     runs-on: ubuntu-latest
@@ -10,16 +10,16 @@ jobs:
       - uses: actions/checkout@v4
       - name: Install unzip
         run: sudo apt-get install unzip
-      - name: Unzip src.zip
+      - name: Unzip Client-Locket-Dio-main.zip
         run: |
-          unzip src.zip -d .  # Giải nén vào thư mục gốc
-          rm src.zip  # Xóa src.zip
+          unzip Client-Locket-Dio-main.zip -d .  # Giải nén vào thư mục gốc
+          rm Client-Locket-Dio-main.zip  # Xóa Client-Locket-Dio-main.zip
       - name: Commit changes
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add src/
-          git commit -m "Update src folder from src.zip"
+          git commit -m "Update src folder from Client-Locket-Dio-main.zip"
           git push origin main
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
