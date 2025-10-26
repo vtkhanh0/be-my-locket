@@ -1,5 +1,5 @@
 import React from "react";
-import Mirage from "../ui/Loading/mirage";
+import Mirage from "../UI/Loading/mirage";
 
 const LoadingPage = ({ isLoading }) => {
   return (
