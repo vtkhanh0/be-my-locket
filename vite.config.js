@@ -6,22 +6,15 @@ import { visualizer } from "rollup-plugin-visualizer";
 import { VitePWA } from "vite-plugin-pwa";
 
 const manifestForPlugIn = {
-  // ✅ Dùng đúng chiến lược cập nhật SW
   strategies: "injectManifest",
   srcDir: "src",
   filename: "sw.js",
-
-  // ✅ Auto inject code register SW
   injectRegister: "auto",
   injectManifest: {
-    maximumFileSizeToCacheInBytes: 0, // ✅ TẮT HOÀN TOÀN cache tự động
+    maximumFileSizeToCacheInBytes: 0,
   },
-
-  // ✅ Tự kiểm tra và cập nhật SW khi có bản mới
   registerType: "autoUpdate",
-
   includeAssets: ["favicon.ico", "apple-touch-icon.png", "maskable-icon-512x512.png"],
-
   manifest: {
     name: "Locket Dio",
     short_name: "Locket Dio",
@@ -67,7 +60,7 @@ export default defineConfig({
   plugins: [tailwindcss(), react(), VitePWA(manifestForPlugIn), visualizer()],
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "src"), // alias @ trỏ vào thư mục src
+      "@": path.resolve(__dirname, "src"),
     },
   },
   build: {
@@ -81,6 +74,6 @@ export default defineConfig({
         },
       },
     },
-    chunkSizeWarningLimit: 1500, // tăng giới hạn warning, đỡ spam console
+    chunkSizeWarningLimit: 1500,
   },
 });
